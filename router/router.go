@@ -16,7 +16,7 @@ func Router() *mux.Router {
 	router.HandleFunc(API_BASE_URL+"/note", middleware.CreateTask).Methods("POST", "OPTIONS")
 	router.HandleFunc(API_BASE_URL+"/notes-by-user", middleware.FetchTasks).Methods("POST", "OPTIONS")
 	router.HandleFunc(API_BASE_URL+"/note/delete/{id}", middleware.DeleteTask).Methods("DELETE", "OPTIONS")
-	// router.HandleFunc(API_BASE_URL+"/note/{id}", middleware.TaskStatus).Methods("PUT", "OPTIONS")
+	router.HandleFunc(API_BASE_URL+"/note/{id}", middleware.TaskStatus).Methods("PUT", "OPTIONS")
 	return router
 
 }
