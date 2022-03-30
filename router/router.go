@@ -12,11 +12,11 @@ func Router() *mux.Router {
 	router.HandleFunc(API_BASE_URL+"/user/add", middleware.CreateUser).Methods("POST", "OPTIONS")
 	router.HandleFunc(API_BASE_URL+"/user/login", middleware.LoginUser).Methods("POST", "OPTIONS")
 
-	router.HandleFunc(API_BASE_URL+"/note/{id}", middleware.UpdateTask).Methods("PUT", "OPTIONS")
-	router.HandleFunc(API_BASE_URL+"/note", middleware.CreateTask).Methods("POST", "OPTIONS")
-	router.HandleFunc(API_BASE_URL+"/notes-by-user", middleware.FetchTasks).Methods("POST", "OPTIONS")
-	router.HandleFunc(API_BASE_URL+"/note/delete/{id}", middleware.DeleteTask).Methods("DELETE", "OPTIONS")
-	router.HandleFunc(API_BASE_URL+"/note/{id}", middleware.TaskStatus).Methods("PUT", "OPTIONS")
+	router.HandleFunc(API_BASE_URL+"/update-task/{id}", middleware.UpdateTask).Methods("PUT", "OPTIONS")
+	router.HandleFunc(API_BASE_URL+"/task", middleware.CreateTask).Methods("POST", "OPTIONS")
+	router.HandleFunc(API_BASE_URL+"/tasks-by-user", middleware.FetchTasks).Methods("POST", "OPTIONS")
+	router.HandleFunc(API_BASE_URL+"/task/delete/{id}", middleware.DeleteTask).Methods("DELETE", "OPTIONS")
+	router.HandleFunc(API_BASE_URL+"/task/{id}", middleware.TaskStatus).Methods("PUT", "OPTIONS")
 	return router
 
 }
