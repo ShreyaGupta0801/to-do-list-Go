@@ -69,12 +69,11 @@ func DeleteTask(w http.ResponseWriter, r *http.Request) {
 func TaskStatus(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Done task hit")
 	vars := mux.Vars(r)
-	id, ok := vars["id"]
-	if !ok {
-		fmt.Println("id is missing in parameters")
-	}
+	id := vars["id"]
+
 	fmt.Println(`id := `, id)
 	database.TaskStatus(id)
+	json.NewEncoder(w).Encode(vars["id"])
 }
 func UpdateTask(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/x-www-form-urlencoded")
