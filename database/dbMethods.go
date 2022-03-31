@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"fmt"
+	encryption "golang-react-to-do/server/encryption"
 	"golang-react-to-do/server/models"
 	"log"
 	"os"
@@ -38,7 +39,7 @@ func CreateDbInstance() {
 }
 func InsertUser(user models.User) models.User {
 	collection = mongoClient.Database("golang-db").Collection("users")
-	HashedUserPassword, err := HashPassword(user.Password)
+	HashedUserPassword, err := encryption.HashPassword(user.Password)
 	user.Password = HashedUserPassword
 	if err != nil {
 		log.Fatal(err)
@@ -65,7 +66,7 @@ func CheckUserLogin(user models.User) models.User {
 	if err != nil {
 		return nullUser
 	}
-	var passwordMatch = CheckPasswordHash(user.Password, result.Password)
+	var passwordMatch = encryption.CheckPasswordHash(user.Password, result.Password)
 	if !passwordMatch {
 		return nullUser
 	}
