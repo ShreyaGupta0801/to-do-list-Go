@@ -1,7 +1,7 @@
 package router
 
 import (
-	"golang-react-to-do/server/service"
+	service "golang-react-to-do/server/service"
 
 	"github.com/gorilla/mux"
 )
